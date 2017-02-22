@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01A43B751E5D1B35000A7837 /* PostListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A43B741E5D1B35000A7837 /* PostListTableViewController.swift */; };
 		01D2F4811E5CE3F5004F3F04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D2F4801E5CE3F5004F3F04 /* AppDelegate.swift */; };
 		01D2F4861E5CE3F5004F3F04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D2F4841E5CE3F5004F3F04 /* Main.storyboard */; };
 		01D2F4881E5CE3F5004F3F04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01D2F4871E5CE3F5004F3F04 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01A43B741E5D1B35000A7837 /* PostListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListTableViewController.swift; sourceTree = "<group>"; };
 		01D2F47D1E5CE3F5004F3F04 /* PostApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01D2F4801E5CE3F5004F3F04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = PostApp/AppDelegate.swift; sourceTree = "<group>"; };
 		01D2F4851E5CE3F5004F3F04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				01D2F4841E5CE3F5004F3F04 /* Main.storyboard */,
+				01A43B741E5D1B35000A7837 /* PostListTableViewController.swift */,
 				01D2F4891E5CE3F5004F3F04 /* LaunchScreen.storyboard */,
 			);
 			name = Storyboard;
@@ -195,6 +198,7 @@
 				01D2F49B1E5CEA44004F3F04 /* Post.swift in Sources */,
 				01D2F49D1E5CF592004F3F04 /* PostController.swift in Sources */,
 				01D2F4991E5CE4C6004F3F04 /* NetworkController.swift in Sources */,
+				01A43B751E5D1B35000A7837 /* PostListTableViewController.swift in Sources */,
 				01D2F4811E5CE3F5004F3F04 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,6 +363,7 @@
 				01D2F4911E5CE3F5004F3F04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

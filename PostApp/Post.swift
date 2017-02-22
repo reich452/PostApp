@@ -30,7 +30,7 @@ struct Post {
     }
     
     
-    
+    // identifier could be first to match the cast of JSON Serilization / could switch around 
     init?(jsonDictionary: [String: Any], identifier: String) {
         guard let username = jsonDictionary[usernameKey] as? String,
             let timestamp = jsonDictionary[timestampKey] as? Double,
