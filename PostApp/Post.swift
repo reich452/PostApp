@@ -42,6 +42,20 @@ struct Post {
         self.identifier = identifier
         self.timestamp = timestamp
         
+       // jsonRepresentation that will be used to send Post objects to the API.
+        
+        var jsonRepresentation: [String:Any] {
+            return [usernameKey: username, timestampKey : timestamp, textKey : text]
+        }
+        
+        //This will be used when you set the HTTP Body on the URLRequest, which requires Data?, not a [String: Any]
+
+        
+        var jsonData: Data? {
+            let data = try? JSONSerialization.data(withJSONObject: jsonRepresentation, options: .prettyPrinted)
+            return data
+        }
+        
         
     }
     
