@@ -31,7 +31,7 @@ class PostListTableViewController: UITableViewController, PostControllerDelegate
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath)
         
         let post = postController.posts[indexPath.row]
         let postDate = Date(timeIntervalSince1970: post.timestamp)
@@ -45,9 +45,7 @@ class PostListTableViewController: UITableViewController, PostControllerDelegate
     
     @IBAction func refreshControllerPulled(_ sender: UIRefreshControl) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        
-       
-        
+                
         
     }
     
