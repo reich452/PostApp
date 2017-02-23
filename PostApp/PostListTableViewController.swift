@@ -28,7 +28,7 @@ class PostListTableViewController: UITableViewController, PostControllerDelegate
         presentNewPostAlert()
     }
     
-    // MARK: - Table view data source
+    // MARK: - Table view data source and delegate
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return postController.posts.count
@@ -47,10 +47,25 @@ class PostListTableViewController: UITableViewController, PostControllerDelegate
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if (indexPath as NSIndexPath).row+1 == postController.posts.count {
+            postController.fetchPosts(reset: false, completion: { (newPosts) in
+                if !newPosts.isEmpty {
+                    tableView.reloadData()
+                }
+            })
+        }
+        
+    }
+    
     
     @IBAction func refreshControllerPulled(_ sender: UIRefreshControl) {
-        postController.fetchPosts()
-        sender.endRefreshing()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        postController.fetchPosts { (_) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            sender.endRefreshing()
+        }
         
     }
     
@@ -110,3 +125,6 @@ class PostListTableViewController: UITableViewController, PostControllerDelegate
     
     
 }
+
+
+

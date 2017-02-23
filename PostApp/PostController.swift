@@ -14,6 +14,8 @@ class PostController {
     
     static let getterEndpoint = baseURL?.appendingPathExtension("json")
     
+    
+    
     // MARK: - Properties 
     
     weak var delegate: PostControllerDelegate?
@@ -29,10 +31,18 @@ class PostController {
     }
     
     func fetchPosts(reset: Bool = true, completion: (([Post]) -> Void)? = nil) {
+        let queryEndInterval = reset ? Date().timeIntervalSince1970 : posts.last?.timestamp ?? Date().timeIntervalSince1970
+        let urlParameters = [
+            "orderBy": "\"timestamp\"",
+            "endAt": "\(queryEndInterval)",
+            "limitToLast": "15",
+            ]
+        
+        
         
         guard let url = PostController.getterEndpoint else { return }
         
-        NetworkController.performRequest(for: url, httpMethod: .Get, urlParameters: nil, body: nil) { (data, error) in
+        NetworkController.performRequest(for: url, httpMethod: .Get, urlParameters: urlParameters, body: nil) { (data, error) in
             
             if error != nil {
                 print("\(error)")
@@ -50,10 +60,16 @@ class PostController {
             
             //Grand Central Dispatch to force the completion closure to run on the main thread.
             
+            
             DispatchQueue.main.async {
-                self.posts = sortedArray
-                completion?(sortedArray)
                 
+                if reset {
+                    self.posts = sortedArray
+                } else {
+                    self.posts.append(contentsOf: sortedArray)
+                }
+                
+                completion?(sortedArray)
             }
             
         }
@@ -74,6 +90,7 @@ class PostController {
         
         
         NetworkController.performRequest(for: putEndpoint, httpMethod: .Put, urlParameters: nil, body: post.jsonData) { (data, error) in
+            
             
             guard let data = data,
                 let responseDataString = String(data: data, encoding: .utf8) else { completion(false); return  }
