@@ -58,6 +58,36 @@ class PostController {
             
         }
     }
+    
+    func addNewPostWith(username: String, text: String, completion: @escaping (Bool) -> Void) {
+        
+        //Initialize a Post object with the memberwise initialize
+        let post = Post(username: username, text: text)
+        
+                    //UUID initialized
+        let uuid = post.identifier.uuidString
+        
+        
+        // Put you have to make a new one
+        guard let putEndpoint = PostController.baseURL?.appendingPathComponent(uuid).appendingPathExtension("json") else { return }
+    
+        
+        
+        NetworkController.performRequest(for: putEndpoint, httpMethod: .Put, urlParameters: nil, body: post.jsonData) { (data, error) in
+            
+            guard let data = data,
+                let responseDataString = String(data: data, encoding: .utf8) else { completion(false); return  }
+            
+            if let error = error {
+                print("There was error loading into the posting data base \(error.localizedDescription)")
+                completion(false)
+            } else {
+                print("You have succesfully saved data to the endpoint \nRespons: \(responseDataString)")
+                completion(true)
+                
+            }
+        }
+    }
 }
 
 
