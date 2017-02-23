@@ -28,7 +28,7 @@ class PostController {
       fetchPosts()
     }
     
-    func fetchPosts(completion: (([Post]) -> Void)? = nil) {
+    func fetchPosts(reset: Bool = true, completion: (([Post]) -> Void)? = nil) {
         
         guard let url = PostController.getterEndpoint else { return }
         

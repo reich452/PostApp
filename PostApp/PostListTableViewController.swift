@@ -49,8 +49,8 @@ class PostListTableViewController: UITableViewController, PostControllerDelegate
     
     
     @IBAction func refreshControllerPulled(_ sender: UIRefreshControl) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        
+        postController.fetchPosts()
+        sender.endRefreshing()
         
     }
     
@@ -87,8 +87,6 @@ class PostListTableViewController: UITableViewController, PostControllerDelegate
         self.present(alertController, animated: true, completion: nil)
         
         // MARK: - Error Alert
-        
-        
         
     }
     

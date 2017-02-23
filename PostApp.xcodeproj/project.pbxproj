@@ -83,6 +83,7 @@
 		01D2F4931E5CE413004F3F04 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				01A43B741E5D1B35000A7837 /* PostListTableViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -115,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				01D2F4841E5CE3F5004F3F04 /* Main.storyboard */,
-				01A43B741E5D1B35000A7837 /* PostListTableViewController.swift */,
 				01D2F4891E5CE3F5004F3F04 /* LaunchScreen.storyboard */,
 			);
 			name = Storyboard;
