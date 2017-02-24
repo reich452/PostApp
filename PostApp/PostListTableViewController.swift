@@ -92,9 +92,7 @@ class PostListTableViewController: UITableViewController, PostControllerDelegate
                 self.tableView.reloadData()
             })
             
-            
             self.tableView.reloadData()
-            
         }
         alertController.addAction(addPostAction)
         alertController.addAction(dissMissAction)
